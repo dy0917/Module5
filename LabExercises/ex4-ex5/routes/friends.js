@@ -1,3 +1,5 @@
+/*without controllers
+
 import express from 'express';
 import friends from '../models/friends.js'; // Import the friends data
 
@@ -6,7 +8,29 @@ const router = express.Router();
 router.get('/', (_req, res) => {
     res.json(friends);
 }
-);
+);*/
+
+
+//with controllers
+// routes/friends.js
+import { Router } from 'express';
+import {
+  getAllFriends,
+  filterFriends,
+  getInfo,
+  getFriendById,
+  addFriend,
+  updateFriend
+} from '../controllers/friendsController.js';
+
+const router = Router();
+
+router.get('/', getAllFriends);
+router.get('/filter', filterFriends);
+router.get('/info', getInfo);
+router.get('/:id', getFriendById);
+router.post('/', addFriend);
+router.put('/:id', updateFriend);
 
 
 // 1. Filter endpoint: support filtering by starting 'letter'
