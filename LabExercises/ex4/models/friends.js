@@ -7,4 +7,4 @@ const friends = [
     { id: 6, name: 'Rachael', gender: 'female'}
 ]
 
-module.exports = friends;
+export default friends;

@@ -1,6 +1,13 @@
-const express = require("express");
+import express from 'express';
+import friends from '../models/friends.js'; // Import the friends data
+
 const router = express.Router();
-const friends = require('../models/friends');
+
+router.get('/', (_req, res) => {
+    res.json(friends);
+}
+);
+
 
 // 1. Filter endpoint: support filtering by starting 'letter'
 router.get('/filter', (req, res) => {
@@ -37,7 +44,7 @@ router.get('/info', (req, res) => {
 router.get('/:id', (req, res) => {
     console.log(req.params);
     let friendId = parseInt(req.params.id); // convert to number
-    const friend = friends.find(f => f.id === friendId);
+    const friend = find(f => f.id === friendId);
 
     if (friend) {
         res.status(200).json(friend);
@@ -55,10 +62,10 @@ router.post('/', (req, res) => {
         return;
     }
     else if (!newFriend.id) {
-        newFriend.id = friends.length + 1;
+        newFriend.id = length + 1;
     }
 
-    friends.push(newFriend);
+    push(newFriend);
     res.status(200).json(newFriend);
 });
 
@@ -67,7 +74,7 @@ router.put('/:id', (req, res) => {
     let friendId = parseInt(req.params.id);
     let updatedFriend = req.body;
 
-    const index = friends.findIndex(f => f.id === friendId);
+    const index = findIndex(f => f.id === friendId);
 
     if (index !== -1) {
         friends[index] = { ...friends[index], ...updatedFriend };
@@ -78,8 +85,8 @@ router.put('/:id', (req, res) => {
 });
 
 // default endpoint: gets all friends
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.json(friends);
 });
 
-module.exports = router;
+export default router;
