@@ -3,6 +3,14 @@ const userRoutes = require('./routes/userRoutes.js');
 // map the user routes to our app
 app.use('/users', userRoutes);
 
+
+const app = require('./app');
+// start the app to listen on the right port
+app.listen(port, () => {
+console.log(`Example app listening at http://localhost:${port}`)
+})
+
+
 const express = require('express')
 const app = express()
 const port = 3000
