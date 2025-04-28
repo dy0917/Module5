@@ -59,34 +59,32 @@ describe('Calculator API', () => {
 
 });*/
 
-
-import* as request from 'supertest';
-import app from '../app.js'; 
-
+import request from "supertest";
+import app from "../app.js";
 
 //const res = await request(app).get('/add/2/3');
 
-describe('Calculator API', () => {
-  it('should add two numbers', async () => {
-    const res = await request(app).get('/add/2/3');
+describe("Calculator API", () => {
+  it("should add two numbers", async () => {
+    const res = await request(app).get("/add?a=2&b=3");
     expect(res.statusCode).toEqual(200);
     expect(res.body.result).toBe(5);
   });
 
-  it('should subtract two numbers', async () => {
-    const res = await request(app).get('/subtract/5/2');
+  it("should subtract two numbers", async () => {
+    const res = await request(app).get("/subtract/5/2");
     expect(res.statusCode).toEqual(200);
     expect(res.body.result).toBe(3);
   });
 
-  it('should multiply two numbers', async () => {
-    const res = await request(app).get('/multiply/3/4');
+  it("should multiply two numbers", async () => {
+    const res = await request(app).get("/multiply/3/4");
     expect(res.statusCode).toEqual(200);
     expect(res.body.result).toBe(12);
   });
 
-  it('should divide two numbers', async () => {
-    const res = await request(app).get('/divide/10/2');
+  it("should divide two numbers", async () => {
+    const res = await request(app).get("/divide/10/2");
     expect(res.statusCode).toEqual(200);
     expect(res.body.result).toBe(5);
   });

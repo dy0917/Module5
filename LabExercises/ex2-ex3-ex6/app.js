@@ -8,15 +8,15 @@ app.use('/', calculatorRoutes); // Use calculator routes
 app.use(cors());
 app.use(express.static('public')); // Serve static files
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
-// Routes
-app.get('/', (_req, res) => {
-  res.sendFile(__dirname + '/public/calculator.html');
-});
+// // Routes
+// app.get('/', (_req, res) => {
+//   res.sendFile(__dirname + '/public/calculator.html');
+// });
 
 app.get('/add', (req, res) => {
   const { a, b } = req.query;
