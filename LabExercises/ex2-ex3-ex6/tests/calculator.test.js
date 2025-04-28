@@ -60,10 +60,11 @@ describe('Calculator API', () => {
 });*/
 
 
-import request from 'supertest';
+import* as request from 'supertest';
 import app from '../app.js'; 
 
-const res = await request(app).get('/add/2/3');
+
+//const res = await request(app).get('/add/2/3');
 
 describe('Calculator API', () => {
   it('should add two numbers', async () => {

@@ -1,4 +1,3 @@
-// routes/calculator.js
 import express from 'express';
 
 const router = express.Router();
